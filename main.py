@@ -15,7 +15,15 @@ def new_message(client, message):
         new message
     """
     if message["chat"]["type"] == "private":
-        out = f"{message['message_id']} | {datetime.datetime.fromtimestamp(message['date'])} | chat: '{message['chat']['username']}' | "
+        out = f"{message['message_id']} | {datetime.datetime.fromtimestamp(message['date'])} | "
+        out += f"chat: '{message['chat']['id']}' "
+        if message['chat']['username']:
+            out += f"@{message['chat']['username']} "
+        if message['chat']['first_name']:
+            out += f"{message['chat']['first_name']} "
+        if message['chat']['last_name']:
+            out += f"{message['chat']['last_name']} "
+        out += "| "
         out += message_format(message)
         logging.info(out)
 
