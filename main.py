@@ -7,7 +7,7 @@ import logging
 api_id = 00000  # CHANGE ME
 api_hash = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"   # CHANGE ME
 app = Client("Session", api_id, api_hash)
-logging.basicConfig(filename='meesage_log.log', level=logging.INFO)
+logging.basicConfig(filename='tg.log', level=logging.INFO)
 
 
 def new_message(client, message):
