@@ -4,10 +4,14 @@ import datetime
 import logging
 
 
-api_id = 00000  # CHANGE ME
+api_id = 0000000  # CHANGE ME
 api_hash = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"   # CHANGE ME
 app = Client("Session", api_id, api_hash)
-logging.basicConfig(filename='tg.log', level=logging.INFO)
+
+logger = logging.getLogger(__name__)
+f_handler = logging.FileHandler('tg.log')
+logger.addHandler(f_handler)
+logger.setLevel(logging.INFO)
 
 
 def new_message(client, message):
@@ -25,7 +29,7 @@ def new_message(client, message):
             out += f"{message['chat']['last_name']} "
         out += "| "
         out += message_format(message)
-        logging.info(out)
+        logger.info(out)
 
 
 def message_format(message):
